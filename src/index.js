@@ -1,6 +1,6 @@
 
 
-class inventory = class {
+const inventory = class {
 	/**
 	 * Main inventory constructor
 	 * @constructor
@@ -11,5 +11,21 @@ class inventory = class {
 	constructor(numSlots, stackables) {
 		this.numSlots = numSlots;
 		this.stackables = stackables;
+
+		this.slots = [];
+
+		this.initSlotsArr = () => {
+			let returnArr = [];
+
+			for(let i = 0; i < numSlots; i++) {
+				this.slots.push({ 
+					id: i,
+					occupyingType: null,
+					quantity: null,
+				});
+			}
+		}
 	}
 }
+
+module.exports = inventory;
