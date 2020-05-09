@@ -13,18 +13,38 @@ const inventory = class {
 		this.stackables = stackables;
 
 		this.slots = [];
+	}
 
-		this.initSlotsArr = () => {
-			let returnArr = [];
+	/**
+	 * Initialize Inventory Array
+	 * @method
+	 */
 
-			for(let i = 0; i < numSlots; i++) {
-				this.slots.push({ 
-					id: i,
-					occupyingType: null,
-					quantity: null,
-				});
-			}
+	initSlotsArr() {
+		for(let i = 0; i < this.numSlots; i++) {
+			this.slots.push({ 
+				id: i,
+				occupyingType: null,
+				quantity: 0,
+			});
 		}
+	}
+
+	addItem(slotNum, type, quantity) {
+		this.slots.forEach((slot) => {
+			if(slot.id == slotNum) {
+				let stackableBoolArr = this.stackables.map(itemType => itemType == type);
+
+				if(stackableBoolArr.includes(true)) {
+					slot.quantity = quantity;
+				} 
+				else {
+					slot.quantity = 1;
+				}
+
+				slot.occupyingType = type;
+			}
+		})
 	}
 }
 
