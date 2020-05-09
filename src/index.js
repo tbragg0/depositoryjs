@@ -30,6 +30,14 @@ const inventory = class {
 		}
 	}
 
+	/**
+	 * Add Item To Inventory Array
+	 * @method
+	 * @param {number} slotNum - id of slot you want to add item to
+	 * @param {string} type - type of item you are adding
+	 * @param {number} quantity - number of items you are adding to inventory slot
+	 */
+
 	addItem(slotNum, type, quantity) {
 		this.slots.forEach((slot) => {
 			if(slot.id == slotNum) {
